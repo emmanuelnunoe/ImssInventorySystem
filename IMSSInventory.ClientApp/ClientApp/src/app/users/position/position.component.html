@@ -1,0 +1,38 @@
+<div class="container">
+  <h1>Crear puesto</h1>
+  <hr />
+ <div class="col-xs-4 col-lg-4">
+  <form #positionform="ngform"  appidentityrevealed>
+    <div class="form-group">
+      <label for="position">nombre:</label>
+      <br />
+      <input type="text"
+             id="position"
+             class="form-group"
+             required
+             placeholder="ingresa el nombre del nuevo puesto"
+             [(ngModel)]="position"
+             name="position"
+             novalidate>
+      <em *ngif="positionform.controls.position?.invalid" class="warn" color="warn">requerido</em>
+    </div>
+    <button type="submit" [disabled]="positionform.invalid" class="btn btn-primary mt-3" >crear</button>
+    <br/>
+  </form>
+ </div>
+  <div class="col-xs-4 col-lg-4">
+    <table mat-table [dataSource]="positions"  class="mat-elevation-z8">
+      <ng-container [matColumnDef]="column" *ngFor="let column of displayedColumns">
+        <th mat-header-cell *matHeaderCellDef> {{ column }} </th>
+        <td mat-cell *matCellDef="let emp"> {{ emp[column] }} </td>
+      </ng-container>
+
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let emprow; columns: displayedColumns"></tr>
+    </table>
+  </div>
+
+</div>
+
+
