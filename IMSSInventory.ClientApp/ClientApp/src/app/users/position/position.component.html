@@ -2,19 +2,18 @@
   <h1>Crear puesto</h1>
   <hr />
  <div class="col-xs-4 col-lg-4">
-  <form #positionform="ngform"  appidentityrevealed>
+  <form [fromGroup]="form"  appidentityrevealed>
     <div class="form-group">
       <label for="position">nombre:</label>
       <br />
       <input type="text"
              id="position"
-             class="form-group"
+             class="form-control"
              required
              placeholder="ingresa el nombre del nuevo puesto"
-             [(ngModel)]="position"
              name="position"
-             novalidate>
-      <em *ngif="positionform.controls.position?.invalid" class="warn" color="warn">requerido</em>
+             >
+      <em *ngif="form.get('position').touched && form.get('position').invalid" class="warn" color="warn">requerido</em>
     </div>
     <button type="submit" [disabled]="positionform.invalid" class="btn btn-primary mt-3" >crear</button>
     <br/>

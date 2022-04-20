@@ -17,7 +17,12 @@ export default class PositionComponent implements OnInit, OnChanges {
   public positions: PositionModel[] = [];
   public errorMessage: string = "";
   public displayedColumns: string[] = ['id', 'positionName'];
-  public position: PositionModel = new PositionModel(0,"");
+  public position: PositionModel = new PositionModel(0, "");
+
+  form = new formGroup({
+    position = new FormControl('', Validators.required)
+  });
+
   constructor(private positionProvider: PositionProvider, private _router: Router) {
 
   }
